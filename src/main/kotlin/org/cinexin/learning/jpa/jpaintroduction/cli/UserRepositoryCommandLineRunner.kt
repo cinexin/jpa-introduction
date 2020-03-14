@@ -16,5 +16,9 @@ class UserRepositoryCommandLineRunner(private val userRepository: UserRepository
         val user = User("cinexin", "USER")
         userRepository.save(user)
         logger.info("Inserted user: $user")
+        userRepository.findById(1L).ifPresent {
+            logger.info ("Retrieved user: $it")
+        }
+        logger.info("All users list: ${userRepository.findAll()}")
     }
 }
